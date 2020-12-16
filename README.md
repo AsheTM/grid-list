@@ -1,3 +1,6 @@
+## Do not push to this repo!
+## FORK this repo
+
 ### Goal:
 
 Create a standalone component that lists the provided data and allows the client to view in either a 'list' view, or a 'grid' view.
@@ -55,6 +58,9 @@ http://localhost:4200/api/products
 
 #### Expected time:
 
-2-3 hours.
+1.5 hours.
 
 ---
+
+#### Submission instructions:
+Send us a message you have completed the test, along with a link to the forked repo or your github username and we will get back with you upon reviewing.  No further actions are required.
