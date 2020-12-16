@@ -10,6 +10,7 @@ Create a standalone component that lists the provided data and allows the client
 #### Requirements:
 
 - The grid/row items must match the design at https://www.figma.com/file/27pUiH9CXEgXka5AR1WUCt/Front-End-Angular-Test?node-id=0%3A1 (The actions for the item are not important)
+- Designs are expected to be pixel perfect
 - The component must accept an input of Product[]
 - The component must output the clicked item
 - The component must be visually appealing
@@ -63,4 +64,6 @@ http://localhost:4200/api/products
 ---
 
 #### Submission instructions:
-Send us a message you have completed the test, along with a link to the forked repo or your github username and we will get back with you upon reviewing.  No further actions are required.
+
+- Deploy the application to Netlify
+- Send us a link to the repo, along with the netlify link.  No further action is required.
