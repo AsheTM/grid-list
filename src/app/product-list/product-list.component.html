@@ -1,0 +1,121 @@
+<div class="product-list">
+    <!-- View Button Section -->
+    <div class="view-options">
+        <button class="button-wrapper" (click)="showMenu()">View</button>
+        <div class="filter-menu" *ngIf="isShowMenu">
+            <span class="filter-menu-item" (click)="selectView('listView')" [ngClass]="{'item-active': isListView}">List
+                View</span>
+            <span class="filter-menu-item" (click)="selectView('gridView')" [ngClass]="{'item-active': isGridView}">Grid
+                View</span>
+        </div>
+    </div>
+
+    <!-- List View -->
+    <div class="list-view" *ngIf="isListView">
+        <div>Product List</div>
+        <div class="product-list-wrapper">
+            <div *ngFor="let item of productArray">
+                <div class="product-list-item" (click)="showSelectedItem(item)">
+                    <div class="product-rank small-block" [ngClass]="{'selected-item': item.isSelectedItem}">
+                        <span>{{item.productId}}</span>
+                    </div>
+                    <div class="product-image small-block" [ngClass]="{'selected-item': item.isSelectedItem}">
+                        <img [src]="item.imagePath" class="img-fluid">
+                    </div>
+                    <div class="product-info small-block" [ngClass]="{'selected-item': item.isSelectedItem}">
+                        <div class="product-details">
+                            <div class="product-description">
+                                <div class="header">
+                                    <h5 class="product-title">{{item.title}}</h5>
+                                    <div class="badge-icons">
+                                        <span class="icon-margin"><img src="assets/images/check-icon.png"></span>
+                                        <span class="badge date">2 days ago</span>
+                                        <span class="badge dropshop">Dropship</span>
+                                        <span class="icon-margin"><img src="assets/images/download-icon.png"></span>
+                                        <span class="icon-margin"><img src="assets/images/eye-icon.png"></span>
+                                        <span class="icon-margin"><img
+                                                src="assets/images/edit-product-tag-icon.png"></span>
+                                    </div>
+                                </div>
+                                <div class="all-icons">
+                                    <div class="icon-number">
+                                        <span class="icon icon-pin"></span>
+                                        <span class="font-20">{{item.tags}}</span>
+                                    </div>
+                                    <div class="icon-number">
+                                        <span class="icon icon-star"></span>
+                                        <span class="font-20">{{item.rating}}</span>
+                                    </div>
+                                    <div class="icon-number">
+                                        <span class="icon icon-shield"></span>
+                                        <span class="font-20">{{item.percentage}}%</span>
+                                    </div>
+                                    <div class="icon-number">
+                                        <span class="icon icon-epack"></span>
+                                        <span class="font-20">{{item.ePacket === true ? 'ePack' : ''}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <p class="font-26">${{item.price}}</p>
+                                <div class="right-icons hide-mobile">
+                                    <span class="icon icon-eye eye"></span>
+                                    <span class="icon icon-heart"></span>
+                                    <span class="icon icon-add add"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid View -->
+    <div class="grid-view" *ngIf="isGridView">
+        <div>Product Grid</div>
+        <div class="product-grid-wrapper">
+            <div *ngFor="let item of productArray">
+                <div class="product-list-item" (click)="showSelectedItem(item)"
+                    [ngClass]="{'selected-item': item.isSelectedItem}">
+                    <div class="product-image small-block">
+                        <img [src]="item.imagePath" class="img-fluid">
+                    </div>
+                    <div class="product-info small-block">
+                        <div class="seperator"></div>
+                        <div class="product-details">
+                            <h5 class="product-title">{{item.title}}</h5>
+                            <div class="product-price">
+                                <p>${{item.price}}</p>
+                            </div>
+                        </div>
+                        <div class="seperator"></div>
+                        <div class="all-icons">
+                            <div class="icon-number">
+                                <span class="icon icon-trophy"></span>
+                                <span>223</span>
+                            </div>
+                            <div class="icon-number">
+                                <span class="icon icon-pin"></span>
+                                <span>{{item.tags}}</span>
+                            </div>
+                            <div class="icon-number">
+                                <span class="icon icon-star"></span>
+                                <span>{{item.rating}}</span>
+                            </div>
+                            <div class="icon-number">
+                                <span class="icon icon-shield"></span>
+                                <span>{{item.percentage}}%</span>
+                            </div>
+                            <div class="icon-number">
+                                <span class="icon icon-epack"></span>
+                                <span>{{item.ePacket === true ? 'ePack' : ''}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
