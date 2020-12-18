@@ -1,0 +1,83 @@
+/** Small Mobile **/
+$_breakpoint-small-mobile-max-width: 612px;
+/************/
+
+/** Mobile **/
+$_breakpoint-mobile-min-width: $_breakpoint-small-mobile-max-width + 1px;
+$_breakpoint-mobile-max-width: 825px;
+/************/
+
+/** Tablet **/
+$_breakpoint-tab-min-width: $_breakpoint-mobile-max-width + 1px;
+$_breakpoint-tab-max-width: 1124px;
+/************/
+
+/**Laptop **/
+$_breakpoint-laptop-min-width: $_breakpoint-tab-max-width + 1px;
+/***********/
+
+////////////////////////////
+@mixin for-small-mobile {
+  @include _breakpoint("small-mobile") {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @include _breakpoint("mobile") {
+    @content;
+  }
+}
+
+@mixin for-tab {
+  @include _breakpoint("tab") {
+    @content;
+  }
+}
+
+@mixin for-laptop {
+  @include _breakpoint("laptop") {
+    @content;
+  }
+}
+
+@mixin _breakpoint($point: "default", $device: all) {
+  @if $point == "small-mobile" {
+    @include at-most($_breakpoint-small-mobile-max-width, $device: screen) {
+      @content;
+    }
+  } @else if $point == "mobile" {
+    @include between($_breakpoint-mobile-min-width, $_breakpoint-mobile-max-width, $device: screen) {
+      @content;
+    }
+  } @else if $point == "tab" {
+      @include between($_breakpoint-tab-min-width, $_breakpoint-tab-max-width, $device: screen) {
+        @content;
+      }
+  } @else if $point == "laptop" {
+      @include at-least($_breakpoint-laptop-min-width, $device: screen) {
+        @content;
+      }
+  } @else {
+    @content;
+  }
+}
+
+@mixin at-least($device-width, $device: screen) {
+  @media #{$device} and (min-width: $device-width) {
+    @content;
+  }
+}
+
+@mixin between($device-min-width, $device-max-width, $device: screen) {
+  @media #{$device} and (min-width: $device-min-width) and (max-width: $device-max-width) {
+    @content;
+  }
+}
+
+@mixin at-most($device-width, $device: screen) {
+  @media #{$device} and (max-width: $device-width) {
+    @content;
+  }
+}
+////////////////////////////

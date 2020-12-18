@@ -1,3 +1,6 @@
+@import 'src/responsive';
+
+
 .product-list {
     .view-options {
         position: relative;
@@ -54,10 +57,11 @@
         .product-list-wrapper {
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
+            justify-content: center;
+            // justify-content: flex-start;
             align-items: center;
             flex-wrap: wrap;
-            width: 1100px;
+            // width: 1100px;
             margin: auto;
 
             .product-list-item {
@@ -84,13 +88,17 @@
                     height: 130px;
                     background: #fff;
                     border-radius: 14px;
-                    display: flex;
+                    display: none;
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
+                    @include for-laptop {
+                        display: flex;
+                    }
                     span {
                         transition: all 0.15s linear;
-                        font-weight: 900;
+                        font-weight: bold;
+                        // font-weight: 900;
                         font-style: normal;
                         font-size: 35px;
                         line-height: 48px;
@@ -99,6 +107,10 @@
                     }
                 }
                 .product-image {
+                    display: none;
+                    @include for-laptop {
+                        display: flex;
+                    }
                     img {
                         width: 110px;
                         height: 110px;
@@ -108,24 +120,38 @@
                 }
                 .product-info {
                     width: 745px;
-                    height: 70px;
+                    height: auto;
+                    // height: 70px;
                     padding: 30px;
                     transition: all 0.15s linear;
+                    @include for-small-mobile {
+                        width: auto;
+                    }
+                    @include for-mobile {
+                        width: auto;
+                    }
                     .product-details {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
                         width: 100%;
+                        @include for-small-mobile {
+                            flex-wrap: wrap;
+                        }
+                        @include for-mobile {
+                            flex-wrap: wrap;
+                        }
                         .product-description {
                             display: flex;
                             flex-direction: column;
-                            width: 500px;
+                            // width: 500px;
                         }
                         .header {
                             display: flex;
                             align-items: center;
                             .product-title {
-                                font-weight: 900;
+                                font-weight: bold;
+                                // font-weight: 900;
                                 font-style: normal;
                                 font-size: 22px;
                                 line-height: 30px;
@@ -135,13 +161,28 @@
                                 margin-bottom: 0;
                                 margin-top: -5px;
                                 height: 27px;
+                                @include for-small-mobile {
+                                    height: auto;
+                                }
+                                @include for-mobile {
+                                    height: auto;
+                                }
                             }
                             .badge-icons {
                                 margin-left: 8px;
                                 display: flex;
                                 align-items: center;
+                                @include for-small-mobile {
+                                    flex-flow: row wrap;
+                                    justify-content: flex-end;
+                                }
+                                @include for-mobile {
+                                    flex-flow: row wrap;
+                                    justify-content: flex-end;
+                                }
                                 span.badge {
-                                    font-weight: 800;
+                                    font-weight: bold;
+                                    // font-weight: 800;
                                     font-style: normal;
                                     font-size: 8px;
                                     line-height: 11px;
@@ -175,7 +216,9 @@
                                 align-items: center;
                                 span {
                                     transition: all 0.15s linear;
-                                    font-weight: 800;
+                                    font-weight: 400;
+                                    // font-weight: bold;
+                                    // font-weight: 800;
                                     font-style: normal;
                                     font-size: 20px;
                                     line-height: 27px;
@@ -193,8 +236,15 @@
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
+                        @include for-small-mobile {
+                            width: 100%;
+                        }
+                        @include for-mobile {
+                            width: 100%;
+                        }
                         p {
-                            font-weight: 900;
+                            font-weight: bold;
+                            // font-weight: 900;
                             font-style: normal;
                             font-size: 26px;
                             line-height: 36px;
@@ -229,10 +279,11 @@
     .product-grid-wrapper {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
+        // justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
-        width: 1066px;
+        // width: 1066px;
         margin: auto;
 
         .product-list-item.selected-item {
@@ -330,5 +381,11 @@
                 }
             }
         }
+    }
+
+    div:not([class]){
+      font-size: 32px;
+      text-align: center;
+      margin: 8px 0 16px;
     }
 }

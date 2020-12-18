@@ -1,20 +1,18 @@
 <div class="product-list">
     <!-- View Button Section -->
     <div class="view-options">
-        <button class="button-wrapper" (click)="showMenu()">View</button>
-        <div class="filter-menu" *ngIf="isShowMenu">
-            <span class="filter-menu-item" (click)="selectView('listView')" [ngClass]="{'item-active': isListView}">List
-                View</span>
-            <span class="filter-menu-item" (click)="selectView('gridView')" [ngClass]="{'item-active': isGridView}">Grid
-                View</span>
+        <button class="button-wrapper" (click)="toggleMenu()">View</button>
+        <div class="filter-menu" *ngIf="isMenuOpen$ | async">
+            <span class="filter-menu-item" (click)="selectView('listView')" [ngClass]="{'item-active': (isListView$ | async)}">List View</span>
+            <span class="filter-menu-item" (click)="selectView('gridView')" [ngClass]="{'item-active': (isGridView$ | async)}">Grid View</span>
         </div>
     </div>
 
     <!-- List View -->
-    <div class="list-view" *ngIf="isListView">
+    <div class="list-view" *ngIf="isListView$ | async">
         <div>Product List</div>
         <div class="product-list-wrapper">
-            <div *ngFor="let item of productArray">
+            <ng-container *ngFor="let item of productArray">
                 <div class="product-list-item" (click)="showSelectedItem(item)">
                     <div class="product-rank small-block" [ngClass]="{'selected-item': item.isSelectedItem}">
                         <span>{{item.productId}}</span>
@@ -68,15 +66,15 @@
 
                     </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 
     <!-- Grid View -->
-    <div class="grid-view" *ngIf="isGridView">
+    <div class="grid-view" *ngIf="isGridView$ | async">
         <div>Product Grid</div>
         <div class="product-grid-wrapper">
-            <div *ngFor="let item of productArray">
+            <ng-container *ngFor="let item of productArray">
                 <div class="product-list-item" (click)="showSelectedItem(item)"
                     [ngClass]="{'selected-item': item.isSelectedItem}">
                     <div class="product-image small-block">
@@ -115,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>
